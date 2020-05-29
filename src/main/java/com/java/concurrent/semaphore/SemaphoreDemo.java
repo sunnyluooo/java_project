@@ -60,9 +60,7 @@ public class SemaphoreDemo   {
         ExecutorService executorService = Executors.newCachedThreadPool();
         SemaphoreDemo semaphoreDemo = new SemaphoreDemo();
         for(int i=0;i<3;i++){
-            executorService.submit(()->{
-                semaphoreDemo.use();
-            });
+            executorService.submit(semaphoreDemo::use);
         }
     }
 }
