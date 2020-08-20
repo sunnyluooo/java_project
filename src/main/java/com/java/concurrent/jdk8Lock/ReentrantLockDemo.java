@@ -13,14 +13,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class ReentrantLockDemo {
 
-    private static int value = 1;
+    protected static int value = 1;
 
-    private static ReentrantLock lock = new ReentrantLock(true);
-
+    private static Lock lock = new ReentrantLock(true);
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        for(int i=0;i<2;i++){
+//        for(int i=0;i<2;i++){
             executorService.submit(()->{
                 try {
 //                    if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
@@ -36,10 +35,25 @@ public class ReentrantLockDemo {
                     lock.unlock();
                 }
             });
-        }
+//        }
+        executorService.submit(()->{
+            try {
+//                    if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
+//                        write();
+//                    }else {
+//                        System.out.println("trylock time out...");
+//                    }
+                lock.lock();
+                read();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                lock.unlock();
+            }
+        });
     }
 
-    private static int read() throws InterruptedException {
+    protected static int read() throws InterruptedException {
         System.out.println(String.format("当前线程:{%s}，read操作",Thread.currentThread().getId()));
         System.out.println(String.format("当前线程:{%s}，readValue:{%s}",Thread.currentThread().getId(),value));
         // sleep 5s
@@ -48,7 +62,7 @@ public class ReentrantLockDemo {
         return value;
     }
 
-    private static int write() throws InterruptedException {
+    protected static int write() throws InterruptedException {
         System.out.println(String.format("当前线程:{%s}，write操作",Thread.currentThread().getId()));
         value+=1;
         System.out.println(String.format("当前线程:{%s}，writeValue:{%s}",Thread.currentThread().getId(),value));
