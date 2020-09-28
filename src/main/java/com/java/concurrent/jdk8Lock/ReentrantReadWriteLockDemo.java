@@ -15,9 +15,9 @@ public class ReentrantReadWriteLockDemo extends ReentrantLockDemo {
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
+        readWriteLock.writeLock().lock();
         executorService.submit(()->{
             try {
-                readWriteLock.writeLock().lock();
                 readWriteLock.readLock().lock();
                 read();
             } catch (InterruptedException e) {
