@@ -6,7 +6,7 @@ import java.util.concurrent.DelayQueue;
  * @author 吴邪
  * @date 2020/10/23 16:54
  */
-public class DelayTest {
+public class DelayDemo {
     static DelayQueue<DelayTask<String>> delayQueue = new DelayQueue<>();
     public static void main(String[] args) throws InterruptedException {
         DelayTask<String> task1 = new DelayTask<>("task1");
