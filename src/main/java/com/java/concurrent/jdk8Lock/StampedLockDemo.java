@@ -11,13 +11,14 @@ public class StampedLockDemo extends ReentrantLockDemo {
 
     public static void main(String[] args) {
         long write = stampedLock.writeLock();
-        long read = stampedLock.tryOptimisticRead();
+        long read = stampedLock.readLock();
+        long readOpt = stampedLock.tryOptimisticRead();
         try {
             read();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        stampedLock.writeLock();
+        stampedLock.unlockRead(read);
 
     }
 
