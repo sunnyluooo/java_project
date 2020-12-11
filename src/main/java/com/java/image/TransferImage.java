@@ -17,7 +17,6 @@ public class TransferImage {
 
     private static final String[] LEGAL_EXT = {"jpg","jpeg","png"};
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void main(String[] args) {
 
         File directory = new File(PATH);
@@ -30,7 +29,7 @@ public class TransferImage {
             for (File file : files) {
                 File target = new File(PATH + "/" + System.currentTimeMillis()+".gif");
                 ImgUtil.convert(file,target);
-                file.delete();
+                System.out.println(file.delete());
             }
         }
 
