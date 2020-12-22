@@ -4,7 +4,7 @@ package com.java.concurrent.volatiled;
  * @author trayvonn
  * @since 2020/12/22 17:44
  */
-public class Test {
+public class VolatileTest {
 
 //    private static int count = 0;
 
@@ -18,7 +18,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        Thread thread1 = new Thread(Test::print);
+        Thread thread1 = new Thread(VolatileTest::print);
         Thread thread2 = new Thread(()->{
             try {
                 Thread.sleep(2000);
