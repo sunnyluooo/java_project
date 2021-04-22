@@ -1,7 +1,6 @@
 package com.java.image;
 
 import cn.hutool.core.img.ImgUtil;
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ArrayUtil;
 
 import java.io.File;
@@ -13,9 +12,9 @@ import java.io.File;
 public class TransferImage {
 
 
-    private static final String PATH = "C:\\Users\\admin\\Desktop\\gif";
+    private static final String PATH = "C:\\Users\\edz\\Desktop\\gif";
 
-    private static final String[] LEGAL_EXT = {"jpg","jpeg","png"};
+    private static final String[] LEGAL_EXT = {"jpg", "jpeg", "png"};
 
     public static void main(String[] args) {
 
@@ -23,12 +22,12 @@ public class TransferImage {
 
         if (directory.isDirectory()) {
             File[] files = directory.listFiles(file -> ArrayUtil.contains(LEGAL_EXT, file.getName().split("\\.")[1]));
-            if(files == null){
-                return ;
+            if (files == null) {
+                return;
             }
             for (File file : files) {
-                File target = new File(PATH + "/" + System.currentTimeMillis()+".gif");
-                ImgUtil.convert(file,target);
+                File target = new File(PATH + "/" + System.currentTimeMillis() + ".gif");
+                ImgUtil.convert(file, target);
                 System.out.println(file.delete());
             }
         }
