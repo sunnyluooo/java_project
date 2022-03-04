@@ -21,7 +21,7 @@ public class TransferImage {
         File directory = new File(PATH);
 
         if (directory.isDirectory()) {
-            File[] files = directory.listFiles(file -> ArrayUtil.contains(LEGAL_EXT, file.getName().split("\\.")[1]));
+            File[] files = directory.listFiles(file -> !file.isDirectory()&& ArrayUtil.contains(LEGAL_EXT, file.getName().split("\\.")[1]));
             if (files == null) {
                 return;
             }

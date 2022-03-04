@@ -1,8 +1,9 @@
 package com.java.concurrent.futuretask;
 
-import sun.java2d.pipe.SpanIterator;
-
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * @author: 吴邪
