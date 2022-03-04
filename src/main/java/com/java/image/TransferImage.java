@@ -12,7 +12,7 @@ import java.io.File;
 public class TransferImage {
 
 
-    private static final String PATH = "C:\\Users\\edz\\Desktop\\gif";
+    private static final String PATH = "/Users/trayvonn/Downloads";
 
     private static final String[] LEGAL_EXT = {"jpg", "jpeg", "png"};
 
